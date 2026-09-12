@@ -148,12 +148,6 @@ function css(decl: string): CSSProperties {
     return out as CSSProperties;
 }
 
-const navStyle = (scrolled: boolean, bannerH: number): string =>
-    `position:sticky;top:${bannerH}px;z-index:50;transition:all 0.3s;border-bottom:1px solid #f3f4f6;` +
-    (scrolled
-        ? 'background:rgba(255,255,255,0.95);box-shadow:0 4px 12px rgba(0,0,0,0.08);backdrop-filter:blur(8px);'
-        : 'background:#fff;box-shadow:0 1px 3px rgba(0,0,0,0.05);');
-
 const cmpHeaderStyle = (bannerH: number): string =>
     `position:sticky;top:${bannerH + 64}px;z-index:20;display:grid;grid-template-columns:1.5fr 0.85fr 0.85fr 0.9fr;background:#F9F9F9;border-bottom:1px solid #ececec;border-radius:20px 20px 0 0;align-items:stretch;overflow:hidden;`;
 
@@ -200,6 +194,7 @@ const gSideStyle = (side: 'prev' | 'next', gIdx: number): string => {
 const KEYFRAMES = `
 //   a { color: #D70808; }
 //   a:hover { color: #b30606; }
+  html { scroll-behavior: smooth; }
   section[id], div[id] { scroll-margin-top: 120px; }
   @keyframes infiniteScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
   @keyframes fbFadeInUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
@@ -223,8 +218,10 @@ function GoogleReviewCarousel({ onOpen }: { onOpen: (i: number) => void }) {
             () => setGIdx((i) => (i + 1) % REVIEW_COUNT),
             3000,
         );
+
         return () => window.clearInterval(id);
     }, []);
+
     return (
         <div className="[margin-top:48px]">
             <div className="[margin-bottom:24px] [display:flex] [align-items:center] [justify-content:center] [gap:8px]">
@@ -446,14 +443,6 @@ export default function LandingPage() {
         (): void => setReviewIdx((i) => ((i ?? 0) + 1) % REVIEW_COUNT),
         [],
     );
-    const prevGoogle = useCallback(
-        (): void => setGIdx((i) => (i - 1 + REVIEW_COUNT) % REVIEW_COUNT),
-        [],
-    );
-    const nextGoogle = useCallback(
-        (): void => setGIdx((i) => (i + 1) % REVIEW_COUNT),
-        [],
-    );
     const closeReturnPopup = useCallback((): void => setRpOpen(false), []);
     const toggleCat = useCallback(
         (i: number): void =>
@@ -507,6 +496,41 @@ export default function LandingPage() {
         }
     }, []);
 
+    const handleAnchorClick = useCallback(
+        (e: React.MouseEvent<HTMLDivElement>): void => {
+            const target = (e.target as HTMLElement).closest('a[href^="#"]');
+
+            if (!target) {
+                return;
+            }
+
+            const href = target.getAttribute('href');
+
+            if (!href) {
+                return;
+            }
+
+            if (href === '#') {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+
+                return;
+            }
+
+            if (href.startsWith('#')) {
+                const targetId = href.slice(1);
+                const targetElement = document.getElementById(targetId);
+
+                if (targetElement) {
+                    e.preventDefault();
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                    window.history.pushState(null, '', href);
+                }
+            }
+        },
+        [],
+    );
+
     /* keyboard nav for both lightboxes */
     useEffect(() => {
         const onKey = (e: KeyboardEvent): void => {
@@ -557,7 +581,10 @@ export default function LandingPage() {
 
             <style>{KEYFRAMES}</style>
 
-            <div className="[min-height:100vh] [font-family:Nunito,system-ui,sans-serif] [background:#fff]">
+            <div
+                onClickCapture={handleAnchorClick}
+                className="[min-height:100vh] [font-family:Nunito,system-ui,sans-serif] [background:#fff]"
+            >
                 {/* Urgency Banner */}
                 <div className="[position:fixed] [top:0] [right:0] [left:0] [z-index:50]">
                     {flashVisible ? (
@@ -8439,7 +8466,7 @@ export default function LandingPage() {
             </section>
 
             {/* Footer */}
-            <footer className="[padding:56px_16px_32px] [background:#151515]">
+            {/* <footer className="[padding:56px_16px_32px] [background:#151515]">
                 <div className="[margin:0_auto] [max-width:1152px]">
                     <div className="[margin-bottom:40px] [display:grid] [grid-template-columns:repeat(auto-fit,minmax(240px,1fr))] [gap:40px]">
                         <div>
@@ -8618,9 +8645,295 @@ export default function LandingPage() {
                         </p>
                     </div>
                 </div>
+            </footer> */}
+
+            <footer className="[padding:56px_16px_32px] [background:#151515]">
+                <div className="[margin:0_auto] [max-width:1152px]">
+                    <div className="[margin-bottom:40px] [display:grid] [grid-template-columns:repeat(auto-fit,minmax(240px,1fr))] [gap:40px]">
+                        <div>
+                            <div className="[margin-bottom:16px]">
+                                <img
+                                    src="https://toefl.fullbrightindonesia.org/logo/Logo-Fullbright.webp"
+                                    alt="Full Bright Indonesia"
+                                    className="[height:auto] [width:160px] [object-fit:contain] [filter:brightness(0)_invert(1)]"
+                                />
+                            </div>
+                            <p className="[margin:0_0_16px] [font-size:12px] [line-height:1.6] [color:#9ca3af]">
+                                SK Kemenkumham RI No. AHU-0055720-AH.0114 Tahun
+                                2020
+                                <br />
+                                SK LKP No. 503/20177/LKP/DPM-PTSP/8/2024
+                                <br />
+                                NPSN K9998700 · Kerjasama dengan IIEF Jakarta
+                            </p>
+                            <div className="[display:flex] [gap:12px]">
+                                <a
+                                    href="https://www.instagram.com/fulbrightindonesia/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="Instagram"
+                                    className="[display:flex] [height:36px] [width:36px] [align-items:center] [justify-content:center] [border-radius:12px] [color:#9ca3af] [background:rgba(255,255,255,0.08)] [text-decoration:none]"
+                                >
+                                    <svg
+                                        width="17"
+                                        height="17"
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                    >
+                                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div>
+                            <p className="[margin:0_0_20px] [font-size:12px] [font-weight:900] [letter-spacing:0.08em] [color:#9ca3af] [text-transform:uppercase]">
+                                Navigasi
+                            </p>
+                            <ul className="[margin:0] [display:flex] [flex-direction:column] [gap:12px] [padding:0] [list-style:none]">
+                                <li>
+                                    <a
+                                        href="#value"
+                                        className="[font-size:14px] [color:#9ca3af] [text-decoration:none]"
+                                    >
+                                        Keunggulan
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="#testimonials"
+                                        className="[font-size:14px] [color:#9ca3af] [text-decoration:none]"
+                                    >
+                                        Testimoni
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="#pricing"
+                                        className="[font-size:14px] [color:#9ca3af] [text-decoration:none]"
+                                    >
+                                        Harga
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="#faq"
+                                        className="[font-size:14px] [color:#9ca3af] [text-decoration:none]"
+                                    >
+                                        FAQ
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <p className="[margin:0_0_20px] [font-size:12px] [font-weight:900] [letter-spacing:0.08em] [color:#9ca3af] [text-transform:uppercase]">
+                                Hubungi Kami
+                            </p>
+                            <ul className="[margin:0] [display:flex] [flex-direction:column] [gap:16px] [padding:0] [list-style:none]">
+                                <li className="[display:flex] [align-items:flex-start] [gap:12px]">
+                                    <div className="[margin-top:2px] [display:flex] [height:32px] [width:32px] [flex-shrink:0] [align-items:center] [justify-content:center] [border-radius:8px] [color:#9ca3af] [background:rgba(255,255,255,0.08)]">
+                                        💬
+                                    </div>
+                                    <div>
+                                        <p className="[margin:0_0_2px] [font-size:12px] [font-weight:600] [color:#fff]">
+                                            Ms. Aini
+                                        </p>
+                                        <a
+                                            href="https://wa.me/6281959486507"
+                                            className="[font-size:12px] [color:#9ca3af] [text-decoration:none]"
+                                        >
+                                            +62 819-5948-6507
+                                        </a>
+                                    </div>
+                                </li>
+
+                                <li className="[display:flex] [align-items:flex-start] [gap:12px]">
+                                    <div className="[margin-top:2px] [display:flex] [height:32px] [width:32px] [flex-shrink:0] [align-items:center] [justify-content:center] [border-radius:8px] [color:#9ca3af] [background:rgba(255,255,255,0.08)]">
+                                        💬
+                                    </div>
+                                    <div>
+                                        <p className="[margin:0_0_2px] [font-size:12px] [font-weight:600] [color:#fff]">
+                                            Mr. Choiri
+                                        </p>
+                                        <a
+                                            href="https://wa.me/6288744875322"
+                                            className="[font-size:12px] [color:#9ca3af] [text-decoration:none]"
+                                        >
+                                            +62 887-4487-5322
+                                        </a>
+                                    </div>
+                                </li>
+
+                                <li className="[display:flex] [align-items:flex-start] [gap:12px]">
+                                    <div className="[margin-top:2px] [display:flex] [height:32px] [width:32px] [flex-shrink:0] [align-items:center] [justify-content:center] [border-radius:8px] [color:#9ca3af] [background:rgba(255,255,255,0.08)]">
+                                        💬
+                                    </div>
+                                    <div>
+                                        <p className="[margin:0_0_2px] [font-size:12px] [font-weight:600] [color:#fff]">
+                                            Ms. Fini
+                                        </p>
+                                        <a
+                                            href="https://wa.me/6285255499299"
+                                            className="[font-size:12px] [color:#9ca3af] [text-decoration:none]"
+                                        >
+                                            +62 852-5549-9299
+                                        </a>
+                                    </div>
+                                </li>
+
+                                <li className="[display:flex] [align-items:flex-start] [gap:12px]">
+                                    <div className="[margin-top:2px] [display:flex] [height:32px] [width:32px] [flex-shrink:0] [align-items:center] [justify-content:center] [border-radius:8px] [color:#9ca3af] [background:rgba(255,255,255,0.08)]">
+                                        ✉
+                                    </div>
+                                    <div>
+                                        <p className="[margin:0_0_2px] [font-size:12px] [font-weight:600] [color:#fff]">
+                                            Email
+                                        </p>
+                                        <a
+                                            href="mailto:info@fullbrightindonesia.org"
+                                            className="[font-size:12px] [color:#9ca3af] [text-decoration:none]"
+                                        >
+                                            info@fullbrightindonesia.org
+                                        </a>
+                                    </div>
+                                </li>
+                                <li className="[display:flex] [align-items:flex-start] [gap:12px]">
+                                    <div className="[margin-top:2px] [display:flex] [height:32px] [width:32px] [flex-shrink:0] [align-items:center] [justify-content:center] [border-radius:8px] [color:#9ca3af] [background:rgba(255,255,255,0.08)]">
+                                        📍
+                                    </div>
+                                    <div>
+                                        <p className="[margin:0_0_2px] [font-size:12px] [font-weight:600] [color:#fff]">
+                                            Alamat
+                                        </p>
+                                        <p className="[margin:0] [font-size:12px] [color:#9ca3af]">
+                                            Gedung Yotta Signature Perintis, Jl.
+                                            Perintis Kemerdekaan No.97 Lantai 3,
+                                            Tamalanrea Jaya, Kec. Tamalanrea,
+                                            Kota Makassar, Sulawesi Selatan
+                                            90245
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div className="[display:flex] [justify-content:center] [padding-top:24px] [font-size:12px] [color:#9ca3af] [border-top:1px_solid_rgba(255,255,255,0.08)]">
+                        <p className="[margin:0]">
+                            © 2026 Full Bright Indonesia. Lembaga Resmi TOEFL
+                            ITP bekerjasama dengan IIEF Jakarta.
+                        </p>
+                    </div>
+                </div>
             </footer>
 
             {/* Return-to-checkout survey bottom sheet */}
+            {/* {rpOpen ? (
+                <>
+                    <div
+                        className="[position:fixed] [inset:0] [z-index:100] [display:flex] [animation:fbFadeInUp_0.2s_ease] [align-items:flex-end] [justify-content:center] [background:rgba(21,21,21,0.45)]"
+                        onClick={closeReturnPopup}
+                    >
+                        <div
+                            className="[position:relative] [max-height:60vh] [width:100%] [max-width:480px] [animation:fbSheetUp_0.25s_ease] [overflow-y:auto] [border-radius:24px_24px_0_0] [padding:22px_22px_28px] [box-shadow:0_-12px_40px_rgba(0,0,0,0.18)] [background:#fff]"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <button
+                                onClick={closeReturnPopup}
+                                aria-label="Tutup"
+                                className="[position:absolute] [top:16px] [right:16px] [display:flex] [height:30px] [width:30px] [cursor:pointer] [align-items:center] [justify-content:center] [border-radius:9999px] [font-size:16px] [color:#6b7280] [background:#F3F4F6] [border:none]"
+                            >
+                                ✕
+                            </button>
+                            <p className="[margin:0_0_6px] [font-size:11px] [font-weight:700] [letter-spacing:0.06em] [color:#6b6b6b] [text-transform:uppercase]">
+                                Sebelum Kamu Pergi
+                            </p>
+                            <h3 className="[margin:0_0_18px] [padding-right:30px] [font-family:Nunito,sans-serif] [font-size:clamp(22px,5vw,26px)] [line-height:1.25] [font-weight:800] [color:#151515]">
+                                Apa yang{' '}
+                                <span className="[color:#D70808]">
+                                    Masih Bikin Kamu Ragu Daftar?
+                                </span>
+                            </h3>
+                            {rpSelected !== null ? (
+                                <>
+                                    <a
+                                        href={waUrl(
+                                            RETURN_WA_MSGS[rpSelected ?? 0],
+                                        )}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="[margin-bottom:14px] [box-sizing:border-box] [display:flex] [width:100%] [align-items:center] [justify-content:center] [gap:8px] [border-radius:12px] [padding:13px_16px] [font-size:14px] [font-weight:700] [color:#fff] [background:#16a34a] [text-decoration:none]"
+                                    >
+                                        💬 Konsultasi via WhatsApp →
+                                    </a>
+                                    <p className="[margin:0_0_2px] [font-size:13px] [font-weight:700] [color:#151515]">
+                                        {RETURN_SUBTEXTS[rpSelected ?? 0]}
+                                    </p>
+                                    <p className="[margin:0_0_12px] [font-size:12px] [font-weight:500] [color:#6b7280]">
+                                        Tim kami siap bantu jawab langsung lewat
+                                        WhatsApp.
+                                    </p>
+                                    <div className="[box-sizing:border-box] [display:flex] [min-height:54px] [width:100%] [align-items:center] [gap:10px] [border-radius:12px] [padding:12px_14px] [background:rgba(215,8,8,0.05)] [border:1px_solid_#D70808]">
+                                        <span className="[display:flex] [height:18px] [width:18px] [flex-shrink:0] [align-items:center] [justify-content:center] [border-radius:9999px] [font-size:10px] [font-weight:800] [color:#fff] [background:#D70808]">
+                                            ✓
+                                        </span>
+                                        <span className="[flex:1] [text-align:left] [font-size:14px] [font-weight:500] [color:#151515]">
+                                            {RETURN_OPTIONS[rpSelected ?? 0]}
+                                        </span>
+                                    </div>
+                                </>
+                            ) : null}
+                            {rpSelected === null ? (
+                                <>
+                                    <div className="[display:flex] [flex-direction:column] [gap:8px]">
+                                        <button
+                                            onClick={() => setRpSelected(0)}
+                                            style={css(rpOptStyle())}
+                                        >
+                                            <span className="[flex:1] [text-align:left] [font-size:14px] [font-weight:500] [color:#151515]">
+                                                Harganya masih terlalu mahal
+                                                buatku
+                                            </span>
+                                        </button>
+
+                                        <button
+                                            onClick={() => setRpSelected(1)}
+                                            style={css(rpOptStyle())}
+                                        >
+                                            <span className="[flex:1] [text-align:left] [font-size:14px] [font-weight:500] [color:#151515]">
+                                                Belum yakin bisa mencapai target
+                                                TOEFL-ku
+                                            </span>
+                                        </button>
+
+                                        <button
+                                            onClick={() => setRpSelected(2)}
+                                            style={css(rpOptStyle())}
+                                        >
+                                            <span className="[flex:1] [text-align:left] [font-size:14px] [font-weight:500] [color:#151515]">
+                                                Belum yakin program ini cocok
+                                                untuk kebutuhanku
+                                            </span>
+                                        </button>
+
+                                        <button
+                                            onClick={() => setRpSelected(3)}
+                                            style={css(rpOptStyle())}
+                                        >
+                                            <span className="[flex:1] [text-align:left] [font-size:14px] [font-weight:500] [color:#151515]">
+                                                Masih membandingkan dengan
+                                                program lain
+                                            </span>
+                                        </button>
+                                    </div>
+                                </>
+                            ) : null}
+                        </div>
+                    </div>
+                </>
+            ) : null} */}
+
             {rpOpen ? (
                 <>
                     <div
@@ -8655,6 +8968,8 @@ export default function LandingPage() {
                                         )}
                                         target="_blank"
                                         rel="noopener noreferrer"
+                                        data-random-wa="true"
+                                        data-analytics-location="return_popup_whatsapp"
                                         className="[margin-bottom:14px] [box-sizing:border-box] [display:flex] [width:100%] [align-items:center] [justify-content:center] [gap:8px] [border-radius:12px] [padding:13px_16px] [font-size:14px] [font-weight:700] [color:#fff] [background:#16a34a] [text-decoration:none]"
                                     >
                                         💬 Konsultasi via WhatsApp →
