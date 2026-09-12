@@ -1,6 +1,7 @@
 import { createInertiaApp } from '@inertiajs/react';
 import createServer from '@inertiajs/react/server';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
+import { Suspense } from 'react';
 import ReactDOMServer from 'react-dom/server';
 
 import { Toaster } from '@/components/ui/sonner';
@@ -31,7 +32,9 @@ createServer((page) =>
         setup: ({ App, props }) => {
             return (
                 <TooltipProvider delayDuration={0}>
-                    <App {...props} />
+                    <Suspense fallback={null}>
+                        <App {...props} />
+                    </Suspense>
                     <Toaster />
                 </TooltipProvider>
             );

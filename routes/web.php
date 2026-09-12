@@ -12,6 +12,10 @@ use Inertia\Inertia;
 
 Route::get('/', function () {
     $mode = (string) config('analytics.mode');
+    if (in_array(strtolower($mode), ['lp', 'c10-lp'], true) || request()->has('lp')) {
+        return Inertia::render('demo/LP');
+    }
+
     $number = preg_replace('/\D+/', '', (string) config('analytics.whatsapp_number'));
     $whatsappUrl = $number ? 'https://wa.me/'.$number.'?text='.urlencode((string) config('analytics.whatsapp_default_message')) : '#pricing';
 
@@ -23,6 +27,14 @@ Route::get('/', function () {
         'productPrice' => config('analytics.product_price'),
     ]);
 })->name('home');
+
+Route::get('/c10-lp', function () {
+    return Inertia::render('demo/LP');
+})->name('demo.c10-lp');
+
+Route::get('/lp', function () {
+    return Inertia::render('demo/LP');
+})->name('demo.lp');
 
 Route::middleware('throttle:120,1')->group(function () {
     Route::post('/analytics/track', [AnalyticsController::class, 'track'])->name('analytics.track');

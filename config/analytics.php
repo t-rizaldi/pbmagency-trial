@@ -8,7 +8,7 @@ $paymentMode = env('PAYMENT_MODE', 'none');
 return [
     'enabled' => (bool) env('ANALYTICS_ENABLED', true),
     'client_id' => env('CLIENT_ID', 'pbm-demo'),
-    'mode' => in_array($mode, ['ctwa', 'form'], true) ? $mode : 'ctwa',
+    'mode' => in_array($mode, ['ctwa', 'form', 'lp'], true) ? $mode : 'ctwa',
     'payment_mode' => in_array($paymentMode, ['none', 'external', 'internal'], true) ? $paymentMode : 'none',
     'external_payment_url' => env('EXTERNAL_PAYMENT_URL'),
     'thank_you_path' => env('THANK_YOU_PATH', '/terima-kasih'),
