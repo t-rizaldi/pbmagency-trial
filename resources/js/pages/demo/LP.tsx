@@ -1,6 +1,7 @@
 import { Head } from '@inertiajs/react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { CSSProperties } from 'react';
+import { TrackedCTA } from '@/components/tracking/TrackedCTA';
 
 /* ============================================================
    Full Bright Indonesia — TOEFL ITP landing page
@@ -637,9 +638,12 @@ export default function LandingPage() {
                                     className="[height:auto] [width:160px] [object-fit:contain]"
                                 />
                             </a>
-                            <a
-                                href="#pricing"
+                            <TrackedCTA
                                 className="[display:flex] [flex-direction:column] [justify-content:center] [gap:1px] [border-radius:9999px] [padding:7px_16px] [box-shadow:0_6px_16px_rgba(215,8,8,0.35)] [background:#D70808] [text-decoration:none]"
+                                zone="nav"
+                                action="scroll"
+                                label="Amankan Seat"
+                                href="#pricing"
                             >
                                 <span className="[font-size:13px] [line-height:1.2] [font-weight:800] [white-space:nowrap] [color:#fff]">
                                     🎓 Amankan Seat
@@ -655,7 +659,7 @@ export default function LandingPage() {
                                         -60%
                                     </span>
                                 </span>
-                            </a>
+                            </TrackedCTA>
                         </div>
                     </header>
                 </div>
@@ -764,18 +768,25 @@ export default function LandingPage() {
                                         id="hero-cta-buttons"
                                         className="[display:flex] [flex-wrap:wrap] [gap:12px] max-[500px]:[flex-direction:column]"
                                     >
-                                        <a
-                                            href="#pricing"
+                                        <TrackedCTA
                                             className="[display:inline-flex] [align-items:center] [justify-content:center] [gap:8px] [border-radius:16px] [padding:14px_28px] [font-size:16px] [font-weight:700] [color:#fff] [box-shadow:0_4px_20px_rgba(215,8,8,0.35)] [background:#D70808] [text-decoration:none] max-[500px]:[box-sizing:border-box] max-[500px]:[width:100%] max-[500px]:[padding:clamp(10px,3vw,14px)_clamp(16px,5vw,28px)] max-[500px]:[font-size:clamp(12px,3.6vw,16px)]"
+                                            zone="hero"
+                                            action="scroll"
+                                            label="Mulai Persiapan TOEFL"
+                                            href="#pricing"
                                         >
                                             Mulai Persiapan TOEFL →
-                                        </a>
-                                        <a
-                                            href="#testimonials"
+                                        </TrackedCTA>
+
+                                        <TrackedCTA
                                             className="[display:inline-flex] [align-items:center] [justify-content:center] [gap:8px] [border-radius:16px] [padding:14px_28px] [font-size:16px] [font-weight:700] [color:#151515] [border:2px_solid_#D70808] [text-decoration:none] max-[500px]:[box-sizing:border-box] max-[500px]:[width:100%] max-[500px]:[padding:clamp(10px,3vw,14px)_clamp(16px,5vw,28px)] max-[500px]:[font-size:clamp(12px,3.6vw,16px)]"
+                                            zone="hero"
+                                            action="scroll"
+                                            label="Lihat Bukti Alumni"
+                                            href="#testimonials"
                                         >
                                             Lihat Bukti Alumni →
-                                        </a>
+                                        </TrackedCTA>
                                     </div>
 
                                     <div
@@ -1511,18 +1522,24 @@ export default function LandingPage() {
 
                     <div className="[text-align:center]">
                         <div className="[display:flex] [flex-wrap:wrap] [justify-content:center] [gap:12px]">
-                            <a
-                                href="#pricing"
+                            <TrackedCTA
                                 className="[display:inline-flex] [align-items:center] [justify-content:center] [gap:8px] [border-radius:16px] [padding:14px_28px] [font-size:16px] [font-weight:700] [color:#fff] [box-shadow:0_4px_20px_rgba(215,8,8,0.35)] [background:#D70808] [text-decoration:none]"
+                                zone="value"
+                                action="scroll"
+                                label="Gabung Sekarang"
+                                href="#pricing"
                             >
                                 Gabung Sekarang →
-                            </a>
-                            <a
-                                href="#testimonials"
+                            </TrackedCTA>
+                            <TrackedCTA
                                 className="[display:inline-flex] [align-items:center] [justify-content:center] [gap:8px] [border-radius:16px] [padding:14px_28px] [font-size:16px] [font-weight:700] [color:#151515] [border:2px_solid_#D70808] [text-decoration:none]"
+                                zone="value"
+                                action="scroll"
+                                label="Lihat Bukti Alumni"
+                                href="#testimonials"
                             >
                                 Lihat Bukti Alumni →
-                            </a>
+                            </TrackedCTA>
                         </div>
                         <div className="[margin-top:12px] [display:flex] [flex-wrap:wrap] [align-items:center] [justify-content:center] [gap:8px_12px]">
                             <span className="[display:flex] [align-items:center] [gap:4px] [font-size:12px] [font-weight:600] [color:#6b7280]">
@@ -1608,18 +1625,24 @@ export default function LandingPage() {
 
                     <div className="[text-align:center]">
                         <div className="[display:flex] [flex-wrap:wrap] [justify-content:center] [gap:12px]">
-                            <a
-                                href="#pricing"
+                            <TrackedCTA
                                 className="[display:inline-flex] [align-items:center] [justify-content:center] [gap:8px] [border-radius:16px] [padding:14px_28px] [font-size:16px] [font-weight:700] [color:#fff] [box-shadow:0_4px_20px_rgba(215,8,8,0.35)] [background:#D70808] [text-decoration:none]"
+                                zone="proof"
+                                action="scroll"
+                                label="Gabung Sekarang"
+                                href="#pricing"
                             >
                                 Gabung Sekarang →
-                            </a>
-                            <a
-                                href="#testimonials"
+                            </TrackedCTA>
+                            <TrackedCTA
                                 className="[display:inline-flex] [align-items:center] [justify-content:center] [gap:8px] [border-radius:16px] [padding:14px_28px] [font-size:16px] [font-weight:700] [color:#151515] [border:2px_solid_#D70808] [text-decoration:none]"
+                                zone="proof"
+                                action="scroll"
+                                label="Lihat Lebih Banyak Bukti"
+                                href="#testimonials"
                             >
                                 Lihat Lebih Banyak Bukti →
-                            </a>
+                            </TrackedCTA>
                         </div>
                         <div className="[margin-top:12px] [display:flex] [flex-wrap:wrap] [align-items:center] [justify-content:center] [gap:8px_12px]">
                             <span className="[display:flex] [align-items:center] [gap:4px] [font-size:12px] [font-weight:600] [color:#6b7280]">
@@ -2121,18 +2144,24 @@ export default function LandingPage() {
                             .
                         </p>
                         <div className="[display:flex] [flex-wrap:wrap] [justify-content:center] [gap:12px]">
-                            <a
-                                href="#pricing"
+                            <TrackedCTA
                                 className="[display:inline-flex] [align-items:center] [justify-content:center] [gap:8px] [border-radius:16px] [padding:14px_28px] [font-size:16px] [font-weight:700] [color:#fff] [box-shadow:0_4px_20px_rgba(215,8,8,0.35)] [background:#D70808] [text-decoration:none]"
+                                zone="lms"
+                                action="scroll"
+                                label="Gabung Sekarang"
+                                href="#pricing"
                             >
                                 Gabung Sekarang →
-                            </a>
-                            <a
-                                href="#testimonials"
+                            </TrackedCTA>
+                            <TrackedCTA
                                 className="[display:inline-flex] [align-items:center] [justify-content:center] [gap:8px] [border-radius:16px] [padding:14px_28px] [font-size:16px] [font-weight:700] [color:#151515] [border:2px_solid_#D70808] [text-decoration:none]"
+                                zone="lms"
+                                action="scroll"
+                                label="Lihat Bukti Alumni"
+                                href="#testimonials"
                             >
                                 Lihat Bukti Alumni →
-                            </a>
+                            </TrackedCTA>
                         </div>
                         <div className="[margin-top:12px] [display:flex] [flex-wrap:wrap] [align-items:center] [justify-content:center] [gap:8px_12px]">
                             <span className="[display:flex] [align-items:center] [gap:4px] [font-size:12px] [font-weight:600] [color:#6b7280]">
@@ -2257,18 +2286,24 @@ export default function LandingPage() {
 
                     <div className="[text-align:center]">
                         <div className="[display:flex] [flex-wrap:wrap] [justify-content:center] [gap:12px]">
-                            <a
-                                href="#pricing"
+                            <TrackedCTA
                                 className="[display:inline-flex] [align-items:center] [justify-content:center] [gap:8px] [border-radius:16px] [padding:14px_28px] [font-size:16px] [font-weight:700] [color:#fff] [box-shadow:0_4px_20px_rgba(215,8,8,0.35)] [background:#D70808] [text-decoration:none]"
+                                zone="why-fullbright"
+                                action="scroll"
+                                label="Gabung Sekarang"
+                                href="#pricing"
                             >
                                 Gabung Sekarang →
-                            </a>
-                            <a
-                                href="#testimonials"
+                            </TrackedCTA>
+                            <TrackedCTA
                                 className="[display:inline-flex] [align-items:center] [justify-content:center] [gap:8px] [border-radius:16px] [padding:14px_28px] [font-size:16px] [font-weight:700] [color:#151515] [border:2px_solid_#D70808] [text-decoration:none]"
+                                zone="why-fullbright"
+                                action="scroll"
+                                label="Lihat Bukti Alumni"
+                                href="#testimonials"
                             >
                                 Lihat Bukti Alumni →
-                            </a>
+                            </TrackedCTA>
                         </div>
                     </div>
                 </div>
@@ -3200,12 +3235,15 @@ export default function LandingPage() {
                                 </span>
                                 .
                             </p>
-                            <a
-                                href="#pricing"
+                            <TrackedCTA
                                 className="[display:inline-flex] [align-items:center] [justify-content:center] [gap:8px] [border-radius:16px] [padding:14px_28px] [font-size:16px] [font-weight:700] [color:#fff] [box-shadow:0_4px_20px_rgba(215,8,8,0.35)] [background:#D70808] [text-decoration:none]"
+                                href="#pricing"
+                                zone="testimonials"
+                                action="scroll"
+                                label="Gabung Sekarang"
                             >
                                 Gabung Sekarang →
-                            </a>
+                            </TrackedCTA>
                         </div>
                     </div>
                 </div>
@@ -3455,7 +3493,7 @@ export default function LandingPage() {
                                         </li>
                                     </ul>
                                     <div className="[display:flex] [flex-direction:column] [gap:6px]">
-                                        <a
+                                        <TrackedCTA
                                             href="https://member.fullbrightindonesia.com/paket-gold-e-course-toefl"
                                             target="_blank"
                                             rel="noopener noreferrer"
@@ -3464,9 +3502,12 @@ export default function LandingPage() {
                                             data-analytics-price="99000"
                                             onClick={markCheckoutClicked}
                                             className="[box-sizing:border-box] [display:inline-flex] [width:100%] [align-items:center] [justify-content:center] [gap:8px] [border-radius:16px] [padding:16px_20px] [font-size:16px] [font-weight:900] [color:#fff] [box-shadow:0_6px_24px_rgba(215,8,8,0.4)] [background:#D70808] [text-decoration:none]"
+                                            zone="pricing"
+                                            action="external_checkout"
+                                            label="Mulai Belajar Mandiri"
                                         >
                                             Mulai Belajar Mandiri →
-                                        </a>
+                                        </TrackedCTA>
                                         <p className="[margin:0] [display:flex] [align-items:center] [justify-content:center] [gap:4px] [text-align:center] [font-size:12px] [color:#9ca3af]">
                                             🔒 Pembayaran aman &amp; terenkripsi
                                         </p>
@@ -3478,7 +3519,7 @@ export default function LandingPage() {
                                         </span>
                                         <div className="[height:1px] [flex:1] [background:#e5e7eb]"></div>
                                     </div>
-                                    <a
+                                    <TrackedCTA
                                         href="https://wa.me/6285255499299?text=Halo%20Admin%20Full%20Bright%20Indonesia.%20Saya%20minat%20mau%20daftar%20E-Course%20Self-Study%20LMS."
                                         target="_blank"
                                         rel="noopener noreferrer"
@@ -3488,6 +3529,9 @@ export default function LandingPage() {
                                         data-analytics-price="99000"
                                         data-analytics-conversion="wa_registration"
                                         className="[box-sizing:border-box] [display:inline-flex] [width:100%] [align-items:center] [justify-content:center] [gap:8px] [border-radius:16px] [padding:12px_20px] [font-size:14px] [font-weight:700] [color:#16a34a] [background:transparent] [border:1.5px_solid_#25D366] [text-decoration:none]"
+                                        zone="pricing"
+                                        action="whatsapp"
+                                        label="Tanya via WhatsApp"
                                     >
                                         <img
                                             src="/assets/admin-avatar.jpg"
@@ -3498,17 +3542,20 @@ export default function LandingPage() {
                                             className="[height:26px] [width:26px] [flex-shrink:0] [border-radius:9999px] [object-fit:cover] [border:2px_solid_#25D366]"
                                         />
                                         💬 Tanya via WhatsApp
-                                    </a>
+                                    </TrackedCTA>
                                     <p className="[margin:14px_0_0] [text-align:center] [font-size:13px] [line-height:1.5] [color:#9ca3af]">
                                         Mau intip materinya dulu?{' '}
-                                        <a
+                                        <TrackedCTA
                                             href="https://class.fullbrightindonesia.com/register"
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="[font-weight:800] [color:#6b7280] [text-underline-offset:3px] [text-decoration:underline]"
+                                            zone="pricing"
+                                            action="link"
+                                            label="Coba gratis 1 modul di LMS"
                                         >
                                             Coba gratis 1 modul di LMS
-                                        </a>
+                                        </TrackedCTA>
                                     </p>
                                 </div>
                             </div>
@@ -3786,7 +3833,7 @@ export default function LandingPage() {
                                         </li>
                                     </ul>
                                     <div className="[display:flex] [flex-direction:column] [gap:6px]">
-                                        <a
+                                        <TrackedCTA
                                             href="https://member.fullbrightindonesia.com/paket-premium-toefl-level-starter-live-zoom-intensif-flash-sale"
                                             target="_blank"
                                             rel="noopener noreferrer"
@@ -3795,9 +3842,12 @@ export default function LandingPage() {
                                             data-analytics-price="200000"
                                             onClick={markCheckoutClicked}
                                             className="[box-sizing:border-box] [display:inline-flex] [width:100%] [align-items:center] [justify-content:center] [gap:8px] [border-radius:16px] [padding:16px_20px] [font-size:16px] [font-weight:900] [color:#fff] [box-shadow:0_6px_24px_rgba(215,8,8,0.4)] [background:#D70808] [text-decoration:none]"
+                                            zone="pricing"
+                                            action="external_checkout"
+                                            label="Apply Sekarang Starter"
                                         >
                                             Apply Sekarang →
-                                        </a>
+                                        </TrackedCTA>
                                         <p className="[margin:0] [display:flex] [align-items:center] [justify-content:center] [gap:4px] [text-align:center] [font-size:12px] [color:#9ca3af]">
                                             🔒 Pembayaran aman &amp; terenkripsi
                                         </p>
@@ -3809,7 +3859,7 @@ export default function LandingPage() {
                                         </span>
                                         <div className="[height:1px] [flex:1] [background:#e5e7eb]"></div>
                                     </div>
-                                    <a
+                                    <TrackedCTA
                                         href="https://wa.me/6285255499299?text=Halo%20Admin%20Full%20Bright%20Indonesia.%20Saya%20minat%20mau%20daftar%20kelas%20TOEFL%20Level%20Starter"
                                         target="_blank"
                                         rel="noopener noreferrer"
@@ -3819,6 +3869,9 @@ export default function LandingPage() {
                                         data-analytics-price="200000"
                                         data-analytics-conversion="wa_registration"
                                         className="[box-sizing:border-box] [display:inline-flex] [width:100%] [align-items:center] [justify-content:center] [gap:8px] [border-radius:16px] [padding:12px_20px] [font-size:14px] [font-weight:700] [color:#16a34a] [background:transparent] [border:1.5px_solid_#25D366] [text-decoration:none]"
+                                        zone="pricing"
+                                        action="whatsapp"
+                                        label="Tanya via WhatsApp"
                                     >
                                         <img
                                             src="/assets/admin-avatar.jpg"
@@ -3829,7 +3882,7 @@ export default function LandingPage() {
                                             className="[height:26px] [width:26px] [flex-shrink:0] [border-radius:9999px] [object-fit:cover] [border:2px_solid_#25D366]"
                                         />
                                         💬 Tanya via WhatsApp
-                                    </a>
+                                    </TrackedCTA>
                                     <div className="[margin-top:14px] [display:flex] [flex-wrap:wrap] [align-items:center] [justify-content:center] [gap:6px]">
                                         <span className="[display:inline-flex] [align-items:center] [gap:4px] [border-radius:9999px] [padding:4px_10px] [font-size:12px] [font-weight:600] [color:#B45309] [background:#FEF3C7]">
                                             ★ 4.9/5
@@ -4081,7 +4134,7 @@ export default function LandingPage() {
                                         </div>
                                     </div>
                                     <div className="[display:flex] [flex-direction:column] [gap:6px]">
-                                        <a
+                                        <TrackedCTA
                                             href="https://member.fullbrightindonesia.com/paket-premium-toefl-level-starter-live-zoom-intensif-flash-sale"
                                             target="_blank"
                                             rel="noopener noreferrer"
@@ -4090,9 +4143,12 @@ export default function LandingPage() {
                                             data-analytics-price="325000"
                                             onClick={markCheckoutClicked}
                                             className="[box-sizing:border-box] [display:inline-flex] [width:100%] [align-items:center] [justify-content:center] [gap:8px] [border-radius:16px] [padding:16px_20px] [font-size:16px] [font-weight:900] [color:#fff] [box-shadow:0_6px_24px_rgba(22,163,74,0.4)] [background:#16a34a] [text-decoration:none]"
+                                            zone="pricing"
+                                            action="external_checkout"
+                                            label="Apply Sekarang Bundling"
                                         >
                                             Apply Sekarang →
-                                        </a>
+                                        </TrackedCTA>
                                         <p className="[margin:0] [display:flex] [align-items:center] [justify-content:center] [gap:4px] [text-align:center] [font-size:12px] [color:#9ca3af]">
                                             🔒 Pembayaran aman &amp; terenkripsi
                                         </p>
@@ -4107,7 +4163,7 @@ export default function LandingPage() {
                                         </span>
                                         <div className="[height:1px] [flex:1] [background:#e5e7eb]"></div>
                                     </div>
-                                    <a
+                                    <TrackedCTA
                                         href="https://wa.me/6285255499299?text=Halo%20Admin%20Full%20Bright%20Indonesia.%20Saya%20minat%20mau%20daftar%20paket%20HEMAT%20TOEFL%20Level%20Starter%20%2B%20Intermediate."
                                         target="_blank"
                                         rel="noopener noreferrer"
@@ -4117,6 +4173,9 @@ export default function LandingPage() {
                                         data-analytics-price="325000"
                                         data-analytics-conversion="wa_registration"
                                         className="[box-sizing:border-box] [display:inline-flex] [width:100%] [align-items:center] [justify-content:center] [gap:8px] [border-radius:16px] [padding:12px_20px] [font-size:14px] [font-weight:700] [color:#16a34a] [background:transparent] [border:1.5px_solid_#25D366] [text-decoration:none]"
+                                        zone="pricing"
+                                        action="whatsapp"
+                                        label="Tanya via WhatsApp"
                                     >
                                         <img
                                             src="/assets/admin-avatar.jpg"
@@ -4127,7 +4186,7 @@ export default function LandingPage() {
                                             className="[height:26px] [width:26px] [flex-shrink:0] [border-radius:9999px] [object-fit:cover] [border:2px_solid_#25D366]"
                                         />
                                         💬 Tanya via WhatsApp
-                                    </a>
+                                    </TrackedCTA>
                                     <div className="[margin-top:14px] [display:flex] [flex-wrap:wrap] [align-items:center] [justify-content:center] [gap:6px]">
                                         <span className="[display:inline-flex] [align-items:center] [gap:4px] [border-radius:9999px] [padding:4px_10px] [font-size:12px] [font-weight:600] [color:#B45309] [background:#FEF3C7]">
                                             ★ 4.9/5
@@ -4314,7 +4373,7 @@ export default function LandingPage() {
                                         </li>
                                     </ul>
                                     <div className="[display:flex] [flex-direction:column] [gap:6px]">
-                                        <a
+                                        <TrackedCTA
                                             href="https://member.fullbrightindonesia.com/paket-premium-toefl-level-intermediate-live-zoom-intensif-flash-sale"
                                             target="_blank"
                                             rel="noopener noreferrer"
@@ -4323,9 +4382,12 @@ export default function LandingPage() {
                                             data-analytics-price="280000"
                                             onClick={markCheckoutClicked}
                                             className="[box-sizing:border-box] [display:inline-flex] [width:100%] [align-items:center] [justify-content:center] [gap:8px] [border-radius:16px] [padding:16px_20px] [font-size:16px] [font-weight:900] [color:#fff] [box-shadow:0_6px_24px_rgba(215,8,8,0.4)] [background:#D70808] [text-decoration:none]"
+                                            zone="pricing"
+                                            action="external_checkout"
+                                            label="Apply Sekarang Intermediate"
                                         >
                                             Apply Sekarang →
-                                        </a>
+                                        </TrackedCTA>
                                         <p className="[margin:0] [display:flex] [align-items:center] [justify-content:center] [gap:4px] [text-align:center] [font-size:12px] [color:#9ca3af]">
                                             🔒 Pembayaran aman &amp; terenkripsi
                                         </p>
@@ -4337,7 +4399,7 @@ export default function LandingPage() {
                                         </span>
                                         <div className="[height:1px] [flex:1] [background:#e5e7eb]"></div>
                                     </div>
-                                    <a
+                                    <TrackedCTA
                                         href="https://wa.me/6285255499299?text=Halo%20Admin%20Full%20Bright%20Indonesia.%20Saya%20minat%20mau%20daftar%20kelas%20TOEFL%20Level%20Intermediate."
                                         target="_blank"
                                         rel="noopener noreferrer"
@@ -4347,6 +4409,9 @@ export default function LandingPage() {
                                         data-analytics-price="280000"
                                         data-analytics-conversion="wa_registration"
                                         className="[box-sizing:border-box] [display:inline-flex] [width:100%] [align-items:center] [justify-content:center] [gap:8px] [border-radius:16px] [padding:12px_20px] [font-size:14px] [font-weight:700] [color:#16a34a] [background:transparent] [border:1.5px_solid_#25D366] [text-decoration:none]"
+                                        zone="pricing"
+                                        action="whatsapp"
+                                        label="Tanya via WhatsApp"
                                     >
                                         <img
                                             src="/assets/admin-avatar.jpg"
@@ -4357,7 +4422,7 @@ export default function LandingPage() {
                                             className="[height:26px] [width:26px] [flex-shrink:0] [border-radius:9999px] [object-fit:cover] [border:2px_solid_#25D366]"
                                         />
                                         💬 Tanya via WhatsApp
-                                    </a>
+                                    </TrackedCTA>
                                     <div className="[margin-top:14px] [display:flex] [flex-wrap:wrap] [align-items:center] [justify-content:center] [gap:6px]">
                                         <span className="[display:inline-flex] [align-items:center] [gap:4px] [border-radius:9999px] [padding:4px_10px] [font-size:12px] [font-weight:600] [color:#B45309] [background:#FEF3C7]">
                                             ★ 4.9/5
@@ -4392,14 +4457,17 @@ export default function LandingPage() {
                                         ✓ Bekerja sama dengan IIEF Jakarta
                                     </span>
                                 </div>
-                                <a
+                                <TrackedCTA
                                     href="https://referensi.data.kemendikdasmen.go.id/pendidikan/npsn/K9998700"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="[margin-top:12px] [display:inline-block] [font-size:12px] [font-weight:600] [color:#D70808] [text-decoration:none]"
+                                    zone="pricing"
+                                    action="link"
+                                    label="Info Detail Legalitas"
                                 >
                                     Info Detail Legalitas →
-                                </a>
+                                </TrackedCTA>
                             </div>
                         </div>
                     </section>
@@ -5047,21 +5115,27 @@ export default function LandingPage() {
                             Masih ada pertanyaan lain? Hubungi kami sekarang.
                         </p>
                         <div className="[display:flex] [flex-wrap:wrap] [justify-content:center] [gap:12px]">
-                            <a
+                            <TrackedCTA
                                 href="https://wa.me/6285255499299?text=Halo%20Admin%20Full%20Bright%20Indonesia.%20Saya%20minat%20mau%20daftar%20kelas%20TOEFL.%20Saya%20mau%20tanya-tanya%20dulu."
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 data-random-wa="true"
                                 className="[display:inline-flex] [align-items:center] [justify-content:center] [gap:8px] [border-radius:16px] [padding:14px_28px] [font-size:16px] [font-weight:700] [color:#fff] [box-shadow:0_4px_20px_rgba(215,8,8,0.35)] [background:#D70808] [text-decoration:none]"
+                                zone="faq"
+                                action="whatsapp"
+                                label="Tanya via WhatsApp"
                             >
                                 Chat Via WA →
-                            </a>
-                            <a
+                            </TrackedCTA>
+                            <TrackedCTA
                                 href="#testimonials"
                                 className="[display:inline-flex] [align-items:center] [justify-content:center] [gap:8px] [border-radius:16px] [padding:14px_28px] [font-size:16px] [font-weight:700] [color:#151515] [border:2px_solid_#D70808] [text-decoration:none]"
+                                zone="faq"
+                                action="scroll"
+                                label="Lihat Bukti Alumni"
                             >
                                 Lihat Bukti Alumni →
-                            </a>
+                            </TrackedCTA>
                         </div>
                     </div>
                 </div>
@@ -5180,12 +5254,15 @@ export default function LandingPage() {
                                 NPSN K9998700 · Kerjasama dengan IIEF Jakarta
                             </p>
                             <div className="[display:flex] [gap:12px]">
-                                <a
+                                <TrackedCTA
                                     href="https://www.instagram.com/fulbrightindonesia/"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     aria-label="Instagram"
                                     className="[display:flex] [height:36px] [width:36px] [align-items:center] [justify-content:center] [border-radius:12px] [color:#9ca3af] [background:rgba(255,255,255,0.08)] [text-decoration:none]"
+                                    zone="footer"
+                                    action="link"
+                                    label="Instagram"
                                 >
                                     <svg
                                         width="17"
@@ -5195,7 +5272,7 @@ export default function LandingPage() {
                                     >
                                         <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
                                     </svg>
-                                </a>
+                                </TrackedCTA>
                             </div>
                         </div>
 
@@ -5205,36 +5282,48 @@ export default function LandingPage() {
                             </p>
                             <ul className="[margin:0] [display:flex] [flex-direction:column] [gap:12px] [padding:0] [list-style:none]">
                                 <li>
-                                    <a
+                                    <TrackedCTA
                                         href="#value"
                                         className="[font-size:14px] [color:#9ca3af] [text-decoration:none]"
+                                        zone="footer"
+                                        action="scroll"
+                                        label="Keunggulan"
                                     >
                                         Keunggulan
-                                    </a>
+                                    </TrackedCTA>
                                 </li>
                                 <li>
-                                    <a
+                                    <TrackedCTA
                                         href="#testimonials"
                                         className="[font-size:14px] [color:#9ca3af] [text-decoration:none]"
+                                        zone="footer"
+                                        action="scroll"
+                                        label="Testimoni"
                                     >
                                         Testimoni
-                                    </a>
+                                    </TrackedCTA>
                                 </li>
                                 <li>
-                                    <a
+                                    <TrackedCTA
                                         href="#pricing"
                                         className="[font-size:14px] [color:#9ca3af] [text-decoration:none]"
+                                        zone="footer"
+                                        action="scroll"
+                                        label="Harga"
                                     >
                                         Harga
-                                    </a>
+                                    </TrackedCTA>
                                 </li>
                                 <li>
-                                    <a
+                                    <TrackedCTA
                                         href="#faq"
                                         className="[font-size:14px] [color:#9ca3af] [text-decoration:none]"
+                                        zone="footer"
+                                        action="scroll"
+                                        label="Keunggulan"
                                     >
                                         FAQ
-                                    </a>
+                                    </TrackedCTA>
                                 </li>
                             </ul>
                         </div>
@@ -5252,12 +5341,15 @@ export default function LandingPage() {
                                         <p className="[margin:0_0_2px] [font-size:12px] [font-weight:600] [color:#fff]">
                                             Ms. Aini
                                         </p>
-                                        <a
+                                        <TrackedCTA
                                             href="https://wa.me/6281959486507"
                                             className="[font-size:12px] [color:#9ca3af] [text-decoration:none]"
+                                            zone="footer"
+                                            action="whatsapp"
+                                            label="Hubungi Ms. Aini"
                                         >
                                             +62 819-5948-6507
-                                        </a>
+                                        </TrackedCTA>
                                     </div>
                                 </li>
 
@@ -5269,12 +5361,15 @@ export default function LandingPage() {
                                         <p className="[margin:0_0_2px] [font-size:12px] [font-weight:600] [color:#fff]">
                                             Mr. Choiri
                                         </p>
-                                        <a
+                                        <TrackedCTA
                                             href="https://wa.me/6288744875322"
                                             className="[font-size:12px] [color:#9ca3af] [text-decoration:none]"
+                                            zone="footer"
+                                            action="whatsapp"
+                                            label="Hubungi Mr. Choiri"
                                         >
                                             +62 887-4487-5322
-                                        </a>
+                                        </TrackedCTA>
                                     </div>
                                 </li>
 
@@ -5286,12 +5381,15 @@ export default function LandingPage() {
                                         <p className="[margin:0_0_2px] [font-size:12px] [font-weight:600] [color:#fff]">
                                             Ms. Fini
                                         </p>
-                                        <a
+                                        <TrackedCTA
                                             href="https://wa.me/6285255499299"
                                             className="[font-size:12px] [color:#9ca3af] [text-decoration:none]"
+                                            zone="footer"
+                                            action="whatsapp"
+                                            label="Hubungi Ms. Fini"
                                         >
                                             +62 852-5549-9299
-                                        </a>
+                                        </TrackedCTA>
                                     </div>
                                 </li>
 
@@ -5303,12 +5401,15 @@ export default function LandingPage() {
                                         <p className="[margin:0_0_2px] [font-size:12px] [font-weight:600] [color:#fff]">
                                             Email
                                         </p>
-                                        <a
+                                        <TrackedCTA
                                             href="mailto:info@fullbrightindonesia.org"
                                             className="[font-size:12px] [color:#9ca3af] [text-decoration:none]"
+                                            zone="footer"
+                                            action="email"
+                                            label="Kirim Email"
                                         >
                                             info@fullbrightindonesia.org
-                                        </a>
+                                        </TrackedCTA>
                                     </div>
                                 </li>
                                 <li className="[display:flex] [align-items:flex-start] [gap:12px]">
@@ -5461,13 +5562,16 @@ export default function LandingPage() {
                             >
                                 ✕
                             </button>
-                            <a
+                            <TrackedCTA
                                 href="https://wa.me/6285255499299?text=Halo%20Admin%20Full%20Bright%20Indonesia.%20Saya%20tertarik%20daftar%20kelas%20TOEFL%20Online."
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 data-random-wa="true"
                                 data-analytics-location="whatsapp_bubble"
                                 className="[display:flex] [align-items:flex-start] [gap:11px] [text-decoration:none]"
+                                zone="floating"
+                                action="whatsapp"
+                                label="Balas Sekarang"
                             >
                                 <img
                                     src="/assets/admin-avatar.webp"
@@ -5489,11 +5593,11 @@ export default function LandingPage() {
                                         Balas sekarang →
                                     </span>
                                 </span>
-                            </a>
+                            </TrackedCTA>
                         </div>
                     </>
                 ) : null}
-                <a
+                <TrackedCTA
                     href="https://wa.me/6285255499299?text=Halo%20Admin%20Full%20Bright%20Indonesia.%20Saya%20tertarik%20daftar%20kelas%20TOEFL%20Online."
                     target="_blank"
                     rel="noopener noreferrer"
@@ -5501,6 +5605,9 @@ export default function LandingPage() {
                     data-random-wa="true"
                     data-analytics-location="floating_whatsapp"
                     className="[position:relative] [display:flex] [height:58px] [width:58px] [align-items:center] [justify-content:center] [overflow:visible] [border-radius:9999px] [box-shadow:0_6px_22px_rgba(37,211,102,0.5)] [background:#25D366]"
+                    zone="floating"
+                    action="whatsapp"
+                    label="Chat WhatsApp"
                 >
                     <span className="[display:flex] [align-items:center] [justify-content:center]">
                         <svg
@@ -5513,7 +5620,7 @@ export default function LandingPage() {
                             <path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.553 4.103 1.522 5.833L0 24l6.302-1.499A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.887 0-3.656-.494-5.192-1.358l-.373-.213-3.741.89.934-3.629-.243-.384A9.953 9.953 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"></path>
                         </svg>
                     </span>
-                </a>
+                </TrackedCTA>
             </div>
         </>
     );

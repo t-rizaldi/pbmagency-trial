@@ -6,9 +6,9 @@ use InvalidArgumentException;
 
 final class EventResolver
 {
-    public const ZONES = ['hero', 'pricing', 'sticky', 'floating', 'footer', 'midpage', 'faq', 'nav'];
+    public const ZONES = ['hero', 'pricing', 'sticky', 'floating', 'footer', 'midpage', 'faq', 'nav', 'value', 'proof', 'lms', 'why-fullbright', 'testimonials'];
 
-    public const ACTIONS = ['whatsapp', 'external_checkout', 'form_anchor', 'internal_checkout', 'scroll', 'link'];
+    public const ACTIONS = ['whatsapp', 'external_checkout', 'form_anchor', 'internal_checkout', 'scroll', 'link', 'email'];
 
     public function resolve(string $mode, string $zone, string $action): EventType
     {

@@ -21,9 +21,15 @@ export type CtaZone =
     | 'footer'
     | 'midpage'
     | 'faq'
+    | 'value'
+    | 'proof'
+    | 'lms'
+    | 'testimonials'
+    | 'why-fullbright'
     | 'nav';
 export type CtaAction =
     | 'whatsapp'
+    | 'email'
     | 'external_checkout'
     | 'form_anchor'
     | 'internal_checkout'
